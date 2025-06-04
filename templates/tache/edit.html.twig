@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Tache{% endblock %}
+
+{% block body %}
+    <body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper" style="width: 100%;">
+
+    {% include 'SideBar.html.twig' %}
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            {% include 'TopBar.html.twig' %}
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+    <a href="{{ path('app_tache_index') }}" class="btn btn-outline-secondary rounded-pill shadow-sm">Revenir à la liste</a>
+
+<div class="container mt-4">
+        <h1 class="mb-4"><i class="bi bi-plus-circle"></i> Modifier la tâche</h1>
+
+        <div class="card shadow-sm p-4 mb-4">
+    {{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
+
+<div class="mb-3">
+    <label for="titre" class="form-label"><i class="bi bi-card-text"></i> Titre</label>
+    {{ form_widget(form.titre, {'attr': {'class': 'form-control', 'placeholder': 'Entrer un titre'}}) }}
+    {{ form_errors(form.titre) }}
+</div>
+
+<div class="mb-3">
+    <label for="Utilisateur" class="form-label"><i class="bi bi-exclamation-triangle"></i> Utilisateur</label>
+    {{ form_widget(form.Utilisateur, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.Utilisateur) }}
+</div>
+
+<div class="mb-3">
+    <label for="description" class="form-label"><i class="bi bi-align-left"></i> Description</label>
+    {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder': 'Décrire la tâche'}}) }}
+    {{ form_errors(form.description) }}
+</div>
+
+<div class="mb-3">
+    <label for="statut" class="form-label"><i class="bi bi-toggle-on"></i> Statut</label>
+    {{ form_widget(form.statut, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.statut) }}
+</div>
+
+<div class="mb-3">
+    <label for="priorite" class="form-label"><i class="bi bi-exclamation-triangle"></i> Priorité</label>
+    {{ form_widget(form.priorite, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.priorite) }}
+</div>
+
+<div class="mb-3">
+    <label for="date_echeance" class="form-label"><i class="bi bi-calendar-event"></i> Date d’échéance</label>
+    {{ form_widget(form.date_echeance, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.date_echeance) }}
+</div>
+<div class="row">
+    
+<button class="btn btn-success rounded-pill px-4 py-2 shadow-sm me-2" type="submit">
+    <i class="bi bi-check-circle"></i> {{ button_label|default('Créer') }}
+</button>
+
+    {{ include('tache/_delete_form.html.twig') }}
+</div>
+
+{{ form_end(form) }}
+<div>
+<div>
+{% endblock %}

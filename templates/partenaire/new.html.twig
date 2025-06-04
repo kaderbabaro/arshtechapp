@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Partenaire{% endblock %}
+
+{% block body %}
+    <body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper" style="width: 100%;">
+
+    {% include 'SideBar.html.twig' %}
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            {% include 'TopBar.html.twig' %}
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+<div class="container mt-4">
+        <h1 class="mb-4"><i class="bi bi-plus-circle"></i> Nouveau partenaire</h1>
+
+        <a href="{{ path('app_partenaire_index') }}" class="btn btn-outline-secondary rounded-pill shadow-sm" style="margin-bottom: 5%;">
+            <i class="bi bi-arrow-left"></i> Retour à la liste
+        </a>
+        <div class="card shadow-sm p-4 mb-4">
+
+    {{ form_start(form, {'attr': {'class': 'row g-3'}}) }}
+
+<div class="col-md-6">
+    {{ form_label(form.email, 'Adresse Email') }}
+    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.email) }}
+</div>
+
+<div class="col-md-6">
+    {{ form_label(form.nom, 'Nom') }}
+    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.nom) }}
+</div>
+
+<div class="col-md-6">
+    {{ form_label(form.numerotel, 'Numéro de téléphone') }}
+    {{ form_widget(form.numerotel, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.numerotel) }}
+</div>
+
+<div class="col-md-6">
+    {{ form_label(form.type, 'Type') }}
+    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.type) }}
+</div>
+
+<div class="col-12">
+    {{ form_label(form.description_contrat, 'Description du contrat') }}
+    {{ form_widget(form.description_contrat, {'attr': {'class': 'form-control', 'rows': '3'}}) }}
+    {{ form_errors(form.description_contrat) }}
+</div>
+
+<div class="col-12 text-end mt-3">
+    <button class="btn btn-success">
+        <i class="fas fa-save me-1"></i> Enregistrer
+    </button>
+</div>
+
+{{ form_end(form) }}
+</div>
+</div>
+{% endblock %}

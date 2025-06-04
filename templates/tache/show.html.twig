@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tâche{% endblock %}
+
+{% block body %}
+    <body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper" style="width: 100%;">
+
+        {% include 'SideBar.html.twig' %}
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                {% include 'TopBar.html.twig' %}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+            <a href="{{ path('app_tache_index') }}" class="btn btn-outline-secondary rounded-pill shadow-sm">
+                <i class="fas fa-arrow-left me-1"></i> Retour à la liste
+            </a>
+
+    <div class="container mt-4">
+        <h1 class="mb-4"><i class="fas fa-clipboard-list me-2"></i>Détails de la tâche</h1>
+
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <td>{{ tache.id }}</td>
+                </tr>
+                <tr>
+                    <th><i class="fas fa-heading me-2"></i>Titre</th>
+                    <td>{{ tache.titre }}</td>
+                </tr>
+                <tr>
+                    <th><i class="fas fa-flag me-2"></i>Utilisateur</th>
+                    <td>{{ tache.Utilisateur }}</td>
+                </tr>
+                <tr>
+                    <th><i class="fas fa-align-left me-2"></i>Description</th>
+                    <td>{{ tache.description }}</td>
+                </tr>
+                <tr>
+                    <th><i class="fas fa-toggle-on me-2"></i>Statut</th>
+                    <td>{{ tache.statut }}</td>
+                </tr>
+                <tr>
+                    <th><i class="fas fa-flag me-2"></i>Priorité</th>
+                    <td>{{ tache.priorite }}</td>
+                </tr>
+                <tr>
+                    <th><i class="fas fa-calendar-alt me-2"></i>Date échéance</th>
+                    <td>{{ tache.dateEcheance ? tache.dateEcheance|date('Y-m-d') : '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-start gap-2 mt-3">
+                        {% if app.user and app.user.username in ['saidouabdkad1@gmail.com', 'rsitahassimi@gmail.com', 'abdoulhafizsouleymane2@gmail.com'] %}
+
+            <a href="{{ path('app_tache_edit', {'id': tache.id}) }}" class="btn btn-primary rounded-pill px-4 py-2 shadow-sm me-2">
+                <i class="fas fa-edit me-1"></i> Modifier
+            </a>
+
+            {{ include('tache/_delete_form.html.twig', {'attr': {'class': 'd-inline'}}) }}
+                        {% endif  %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,91 @@
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path("app_dashboard") }}">
+                <div class="sidebar-brand-icon">
+                    <img src=" {{ asset('images/logo.png') }} " width="100" alt="Logo ArshTech">
+                </div>
+                <div class="sidebar-brand-text mx-3">ArshTech <sup>Niger</sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path("app_dashboard") }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Tableau bord</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Activités
+            </div>
+
+            <!-- Nav Item - Finances -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_transaction_index') }}">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Finances</span>
+                </a>
+            </li>
+
+
+            <!-- Nav Item - Tâches -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="false" aria-controls="collapseUtilities">
+                    <i class="fas fa-tasks"></i>
+                    <span>Tâches & Revenus</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ path("app_tache_index")}}">Tâches Hebdomadaires</a>
+                        <a class="collapse-item" href="{{ path("app_objectifs_index")}}">Objectifs</a> 
+                        {# <a class="collapse-item" href="{{ path("app_performance")}}">Performance individuelle</a> #}
+                        {# <a class="collapse-item" href="{{ path("app_estimations_revenus")}}">Estimations de revenus</a> #}
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Divers
+            </div>
+
+            <!-- Nav Item - Partenaires -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path("app_partenaire_index")}}">
+                    <i class="fas fa-handshake"></i>
+                    <span>Partenaires</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Utilisateurs -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path("app_user_index")}}">
+                    <i class="fas fa-users"></i>
+                    <span>Utilisateurs</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->

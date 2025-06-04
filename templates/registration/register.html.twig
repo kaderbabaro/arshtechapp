@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block stylesheet %}
+    <style>
+    body {
+        background: linear-gradient(135deg,rgb(213, 249, 35),rgb(182, 36, 36));
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login-container {
+        background-color: white;
+        padding: 2rem;
+        color: white;
+        border-radius: 1rem;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+    .login-avatar {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 1rem;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #FF5733;
+    }
+</style>
+
+{% endblock %}
+
+{% block body %}
+    <body> 
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow p-4" style="width: 400px;">
+        <h2 class="text-center mb-4">Créer un compte</h2>
+
+        {# Affichage des erreurs de flash #}
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+
+        {{ form_start(registrationForm) }}
+
+            {# Champ Username avec icône #}
+            <div class="mb-3">
+                <label for="{{ registrationForm.username.vars.id }}" class="form-label">
+                    <i class="bi bi-person-fill me-2"></i>Nom d'utilisateur
+                </label>
+                {{ form_widget(registrationForm.username, {attr: {class: 'form-control'}}) }}
+                {{ form_errors(registrationForm.username) }}
+            </div>
+
+            {# Champ Password avec icône #}
+            <div class="mb-3">
+                <label for="{{ registrationForm.plainPassword.vars.id }}" class="form-label">
+                    <i class="bi bi-lock-fill me-2"></i>Mot de passe
+                </label>
+                {{ form_widget(registrationForm.plainPassword, {attr: {class: 'form-control'}}) }}
+                {{ form_errors(registrationForm.plainPassword) }}
+            </div>
+
+            {# Checkbox Terms #}
+            <div class="form-check mb-4">
+                {{ form_widget(registrationForm.agreeTerms, {attr: {class: 'form-check-input'}}) }}
+                <label class="form-check-label" for="{{ registrationForm.agreeTerms.vars.id }}">
+                    J'accepte les termes et conditions
+                </label>
+                {{ form_errors(registrationForm.agreeTerms) }}
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                <i class="bi bi-box-arrow-in-right me-2"></i>S'inscrire
+            </button>
+
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
+</body>
+{% endblock %}

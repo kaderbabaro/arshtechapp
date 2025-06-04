@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'utilisateur{% endblock %}
+
+{% block body %}
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper" style="width: 100%;">
+
+    {% include 'SideBar.html.twig' %}
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            {% include 'TopBar.html.twig' %}
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid py-5">
+
+                <div class="card shadow-lg border-0 rounded-lg mx-auto" style="max-width: 700px;">
+                    <div class="card-header bg-danger text-white d-flex align-items-center">
+                        <i class="bi bi-person-circle fs-2 me-3"></i>
+                        <h3 class="mb-0">Profil de <span class="text-warning">{{ user.username }}</span></h3>
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table table-hover mb-0">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="text-secondary">ID</th>
+                                    <td>{{ user.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-secondary">Nom d'utilisateur</th>
+                                    <td>{{ user.username }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-secondary">Rôles</th>
+                                    <td>
+                                        {% if user.roles|length > 0 %}
+                                            {% for role in user.roles %}
+                                                <span class="badge bg-info text-dark me-1">{{ role|replace({'ROLE_': ''}) }}</span>
+                                            {% endfor %}
+                                        {% else %}
+                                            <em class="text-muted">Aucun rôle</em>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-secondary">Compte vérifié</th>
+                                    <td>
+                                        {% if user.isVerified %}
+                                            <span class="badge bg-success">Oui <i class="bi bi-check-circle-fill"></i></span>
+                                        {% else %}
+                                            <span class="badge bg-danger">Non <i class="bi bi-x-circle-fill"></i></span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-secondary">Photo</th>
+                                    <td>
+                                        {% if user.photo %}
+                                            <img src="{{ asset('uploads/photos/' ~ user.photo) }}" alt="Photo de {{ user.username }}" class="img-thumbnail" style="max-height: 120px;">
+                                        {% else %}
+                                            <em class="text-muted">Pas de photo</em>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card-footer d-flex justify-content-between">
+                        <a href="{{ path('app_user_index') }}" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+                        </a>
+{% if app.user and app.user.username in ['saidouabdkad1@gmail.com', 'rsitahassimi@gmail.com', 'abdoulhafizsouleymane2@gmail.com'] %}
+                        <div class="mt-4 d-flex justify-content-between">
+                            <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-primary rounded-pill px-4 py-2 shadow-sm">
+                                <i class="bi bi-pencil-square"></i> Modifier
+                            </a>
+                            {{ include('user/_delete_form.html.twig') }}
+                        </div>
+{% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+{% endblock %}

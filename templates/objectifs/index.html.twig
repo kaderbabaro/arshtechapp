@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Objectifs{% endblock %}
+
+{% block body %}
+    <body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper" style="width: 100%;">
+
+        {% include 'SideBar.html.twig' %}
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                {% include 'TopBar.html.twig' %}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+
+    <h1 class="mb-4">
+        <i class="fas fa-bullseye text-primary"></i> Liste des Objectifs
+    </h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th><i class="fas fa-heading"></i> Titre</th>
+                    <th><i class="fas fa-coins"></i> Montant</th>
+                    <th><i class="fas fa-align-left"></i> Description</th>
+                    <th><i class="fas fa-clock"></i> Créé le</th> 
+                    <th><i class="fas fa-calendar-day"></i> Date limite de réalisation</th>
+                    <th><i class="fas fa-cogs"></i> Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for objectif in objectifs %}
+                <tr>
+                    
+                    <td>{{ objectif.titre }}</td>
+                    <td>
+                        <span class="text-success fw-bold">
+                            <i class="fas fa-money-bill-wave"></i> {{ objectif.montant }}
+                        </span>
+                    </td>
+                    <td>{{ objectif.Description }}</td>
+                    <td>{{ objectif.createdAT ? objectif.createdAT|date('Y-m-d') : '' }}</td>
+                    <td>
+                        <span class="badge bg-info text-dark">
+                            <i class="fas fa-calendar-alt"></i> {{ objectif.date ? objectif.date|date('Y-m-d') : '' }}
+                        </span>
+                    </td>
+                    
+                    <td>
+                        <a href="{{ path('app_objectifs_show', {'id': objectif.id}) }}"
+                           class="btn btn-sm btn-outline-primary me-1">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        {% if app.user and app.user.username in ['saidouabdkad1@gmail.com', 'rsitahassimi@gmail.com', 'abdoulhafizsouleymane20@gmail.com'] %}
+                        <a href="{{ path('app_objectifs_edit', {'id': objectif.id}) }}"
+                           class="btn btn-sm btn-outline-warning">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted">Aucun objectif trouvé.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% if app.user and app.user.username in ['saidouabdkad1@gmail.com', 'rsitahassimi@gmail.com', 'abdoulhafizsouleymane2@gmail.com'] %}
+    <a href="{{ path('app_objectifs_new') }}" class="btn btn-success mt-3">
+        <i class="fas fa-plus-circle"></i> Créer un nouvel objectif
+    </a>
+{% endif %}
+{% endblock %}

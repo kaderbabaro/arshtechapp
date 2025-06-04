@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue chez ArshTech{% endblock %}
+
+{% block stylesheets %}
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #FFD700, #8B0000); /* Dégradé or → rouge foncé */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+    }
+
+    .logo-container {
+        text-align: center;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .logo-container img {
+        width: 150px;
+        animation: bounce 2s infinite;
+    }
+
+    .logo-container h1 {
+        margin-top: 20px;
+        font-size: 2rem;
+        font-weight: bold;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="logo-container">
+        <img src="{{ asset('images/Sans titre-1.png') }}" alt="Logo ArshTech">
+        <h1>Bienvenue chez ArshTech</h1>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            window.location.href = "{{ path('app_dashboard') }}";
+        }, 3000); // Redirection après 3 secondes
+    </script>
+{% endblock %}

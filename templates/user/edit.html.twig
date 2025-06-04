@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'utilisateur{% endblock %}
+
+{% block body %}
+    
+
+            <div class="container py-5 d-flex justify-content-center">
+
+                <div class="card shadow-lg border-0 rounded-lg p-4" style="width: 100%; max-width: 600px;">
+                    <div class="card-header bg-primary text-white d-flex align-items-center mb-4">
+                        <i class="bi bi-person-circle fs-2 me-3"></i>
+                        <h3 class="mb-0">Modifier l'utilisateur <strong>{{ user.username }}</strong></h3>
+                    </div>
+
+                    {{ form_start(form) }}
+
+                    <div class="mb-3">
+                        <label for="{{ form.username.vars.id }}" class="form-label">
+                            <i class="bi bi-person-fill me-2"></i>Nom d'utilisateur
+                        </label>
+                        {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'Entrez le nom d\'utilisateur'}}) }}
+                        {{ form_errors(form.username) }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{ form.password.vars.id }}" class="form-label">
+                            <i class="bi bi-key-fill me-2"></i>Mot de passe
+                        </label>
+                        {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder': 'Entrez un nouveau mot de passe'}}) }}
+                        {{ form_errors(form.password) }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{ form.photo.vars.id }}" class="form-label">
+                            <i class="bi bi-image-fill me-2"></i>Photo (URL ou nom fichier)
+                        </label>
+                        {{ form_widget(form.photo, {'attr': {'class': 'form-control', 'placeholder': 'Nom de fichier ou URL'}}) }}
+                        {{ form_errors(form.photo) }}
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <a href="{{ path('app_user_index') }}" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-check-circle"></i> Mettre à jour
+                        </button>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+{% endblock %}

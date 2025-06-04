@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des partenaires{% endblock %}
+
+{% block body %}
+    <body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper" style="width: 100%;">
+
+    {% include 'SideBar.html.twig' %}
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            {% include 'TopBar.html.twig' %}
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0"><i class="fas fa-handshake text-primary me-2"></i>Partenaires</h2>
+        <a href="{{ path('app_partenaire_new') }}" class="btn btn-success">
+            <i class="fas fa-plus me-1"></i> Nouveau partenaire
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th><i class="fas fa-envelope"></i> Email</th>
+                    <th><i class="fas fa-user"></i> Nom</th>
+                    <th><i class="fas fa-phone"></i> Téléphone</th>
+                    <th><i class="fas fa-tag"></i> Type</th>
+                    <th><i class="fas fa-file-signature"></i> Contrat</th>
+                    <th><i class="fas fa-cogs"></i> Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for partenaire in partenaires %}
+                    <tr>
+                        
+                        <td>{{ partenaire.email }}</td>
+                        <td>{{ partenaire.nom }}</td>
+                        <td>{{ partenaire.numerotel }}</td>
+                        <td>{{ partenaire.type }}</td>
+                        <td>{{ partenaire.descriptionContrat }}</td>
+                        <td>
+                            <a href="{{ path('app_partenaire_show', {'id': partenaire.id}) }}" class="btn btn-sm btn-info me-1">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="{{ path('app_partenaire_edit', {'id': partenaire.id}) }}" class="btn btn-sm btn-warning">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">Aucun partenaire trouvé.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

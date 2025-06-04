@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Tableau de bord{% endblock %}</title>
+<link rel="icon" type="image/png" href="{{ asset('images/Sans titre-1.png') }}">
+
+    <link rel="stylesheet" href="{{ asset('sbadmin/vendor/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('sbadmin/css/sb-admin-2.min.css') }}">
+    <!-- Bootstrap Select CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+
+<!-- jQuery (si pas déjà présent) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap Select JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+    {% block stylesheets %}
+    {% endblock %}
+</head>
+<body id="page-top">
+
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        {% block body %}
+        {% endblock %}
+    </div>
+
+    <!-- JavaScript scripts in the correct order -->
+
+    <!-- jQuery -->
+    <script src="{{ asset('sbadmin/vendor/jquery/jquery.min.js') }}"></script>
+
+    <!-- Bootstrap bundle (with Popper.js) -->
+    <script src="{{ asset('sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- jQuery Easing -->
+    <script src="{{ asset('sbadmin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- SB Admin 2 core -->
+    <script src="{{ asset('sbadmin/js/sb-admin-2.min.js') }}"></script>
+
+    <!-- Chart.js -->
+    <script src="{{ asset('sbadmin/vendor/chart.js/Chart.min.js') }}"></script>
+
+    <!-- Demo scripts -->
+    <script src="{{ asset('sbadmin/js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('sbadmin/js/demo/chart-pie-demo.js') }}"></script>
+    <script>
+    // Ferme tous les collapses quand on clique ailleurs
+    $(document).click(function (event) {
+        // Si le clic ne se fait pas sur un élément du menu latéral
+        if (!$(event.target).closest('.nav-item').length && !$(event.target).closest('.collapse').length) {
+            // Ferme tous les collapses ouverts
+            $('.collapse.show').collapse('hide');
+        }
+    });
+    <script>
+    $(document).ready(function() {
+        $('.selectpicker').selectpicker();
+    });
+</script>
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    {% block javascripts %}
+    
+    {% endblock %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+
+</body>
+</html>
